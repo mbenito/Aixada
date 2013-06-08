@@ -5,15 +5,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $Text['global_title'] . " - " . $Text['head_ti_validate'] ;?></title>
 
-
 	<link rel="stylesheet" type="text/css"   media="screen" href="css/aixada_main.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/aixadacart/aixadacart.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/fgmenu/fg.menu.css"   />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
-
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
 
     <?php if (isset($_SESSION['dev']) && $_SESSION['dev'] == true ) { ?>
-	     <script type="text/javascript" src="js/jquery/jquery.js"></script>
+	     	<script type="text/javascript" src="js/jquery/jquery.js"></script>
 		<script type="text/javascript" src="js/jqueryui/jqueryui.js"></script>
 		<script type="text/javascript" src="js/fgmenu/fg.menu.js"></script>
 		<script type="text/javascript" src="js/aixadautilities/jquery.aixadaMenu.js"></script>
@@ -24,29 +22,17 @@
 	   	<script type="text/javascript" src="js/js_for_validate.min.js"></script>
     <?php }?>
 
-    <script type="text/javascript" src="js/jqueryui/i18n/jquery.ui.datepicker-<?=$language;?>.js" ></script>
+    	<script type="text/javascript" src="js/jqueryui/i18n/jquery.ui.datepicker-<?=$language;?>.js" ></script>
  	<script type="text/javascript" src="js/aixadacart/i18n/cart.locale-<?=$language;?>.js" ></script>
-
-
-
 	<script type="text/javascript">
+
 	$(function(){
 
 			//loading animation
 			$('.loadSpinner').attr('src', "img/ajax-loader-<?=$default_theme;?>.gif").hide();
 
-
-			//made deposit
-			var gMadeDeposit = true;
-
-
-			//get the operator user id to prevent own validation
-			var gTornUfId = <?=get_session_uf_id();?>;
-
-
 			//stores todays date
 			var gToday = null;
-
 
 			//indicates if cart is not yet validated. 
 			var gActiveCart = 0; 
@@ -55,7 +41,6 @@
 				gToday = date[0];
 				//var today = $.datepicker.parseDate('yy-mm-dd', date[0]);
 			});
-
 
 
 			/**
@@ -72,46 +57,23 @@
 						non_validated_carts = (non_validated_carts > 0)? '&nbsp;&nbsp;(#'+non_validated_carts+')':'';
 						$(row).append(non_validated_carts);
 
-						//dim out own uf
-						if ($(row).val() == gTornUfId){	//cannot validate yourself
-							$(row).addClass('dim60');
-						}
 					},
 					loadOnInit:true
 
 				}).change(function(){
 
-
-					var last_uf = $('#deposit .insert_uf_id').text();
 					var uf_id = $("option:selected", this).val();
-
-					if (!checkMadeDeposit(last_uf, uf_id)) {
-						return false;
-					}
 
 					if (uf_id <=0) {
 						resetFields();
-						resetDeposit();
-						return false;
-
-					} else if (uf_id == gTornUfId){ //cannot validate your own cart
-						$.showMsg({
-							msg:"<?php echo $Text['msg_err_validate_self'];?>",
-							type: 'error'});
-						resetFields();
-						resetDeposit();
 						return false;
 
 					}
 
-
-					//activate the deposit pane
 					$('.insert_uf_id').html('<strong>'+uf_id+'</strong>');
 					$('.showCartDate').removeClass('ui-state-highlight dim40').text('');
 					$('.cartTitle').show();
 					$('.noCartTitle, .validatedCartTitle').hide();
-					$('#deposit_submit').button('enable');
-					$('#deposit_amount, #deposit_note, #search').attr('disabled',false);
 
 					//how many carts are there?
 					$('#tbl_Shop tbody').xml2html('reload',{
@@ -119,7 +81,6 @@
 						params : 'oper=getNonValidatedCarts&uf_id='+uf_id
 					});
 			}); //end of listing
-
 
 
 			//load purchase listing: how may carts does this uf have?
@@ -165,8 +126,6 @@
 			});
 
 
-
-
 			/**
 			 * MULTIPLE CARTS TO VALIDATE / SELECT
 			 */
@@ -193,39 +152,19 @@
 			})
 			.live('click',function(e){
 
-				var last_uf = $('#deposit .insert_uf_id').text();
 				var uf_id = $(this).attr('ufId');
 
-
-				if (!checkMadeDeposit(last_uf, uf_id)) {
-					return false;
-				}
-
-
-
 				$('.showCartDate').removeClass('ui-state-highlight dim40');
-
 
 				var validated = $(this).attr('validated');
 				var cart_id = $(this).attr('shopId');
 				var date_for_shop = $(this).attr('dateForShop');
-
-				if (uf_id == gTornUfId){ //cannot validate your own cart
-					$.showMsg({
-						msg:"<?php echo $Text['msg_err_validate_self'];?>",
-						type: 'error'});
-					resetFields();
-					resetDeposit();
-					return false;
-				}
 
 				//means we come from cart observe
 				if (uf_id > 0){
 					$('#uf_cart_select').val(uf_id).attr('selected','selected');
 					$('.insert_uf_id').html('<strong>'+uf_id+'</strong>');
 
-					$('#deposit_submit').button('enable');
-					$('#deposit_amount, #deposit_note, #search').attr('disabled',false);
 				}
 
 				//if cart is not validated, load it
@@ -261,7 +200,6 @@
 			});
 
 
-
 			//init tabs
 			$("#tabs").tabs();
 
@@ -288,7 +226,6 @@
 					//empty the cart
 					$(this).aixadacart("resetCart");
 
-					gMadeDeposit = false;
 					gActiveCart = false; 
 				},
 				submitError : function (err_msg){
@@ -299,69 +236,10 @@
 			});
 
 
-
-
 		    //init xml2html product search
 			$('#product_list_search tbody').xml2html('init',{
 					url : 'php/ctrl/ShopAndOrder.php'
 				});
-
-
-			/**
-			 *	MAKE A DEPOSIT
-			 */
-			$('#deposit_submit')
-				.button()
-				.click(function(){
-
-					var description = $('#deposit_note').val();
-					var uf_account_id = 1000 + new Number($("#uf_cart_select option:selected").val());
-
-					var quantity = $.checkNumber($('#deposit_amount'), '', 2);
-
-					if (!quantity) {
-						$.showMsg({
-									msg:"<?php echo $Text['msg_enter_deposit_amount'];?>",
-									type: 'warning'});
-						return false;
-
-					} else if (uf_account_id <= 1000 || uf_account_id == '' || typeof(uf_account_id) != 'number' ){
-						$.showMsg({
-									msg:"<?php echo $Text['msg_please_set_ufid_deposit'];?>",
-									type: 'error'});
-						return false;
-					}
-
-
-					$('#deposit_submit').button('disable');
-
-					$.ajax({
-						type: "POST",
-						url: "php/ctrl/Account.php?oper=deposit&account_id="+uf_account_id+"&quantity="+quantity+"&description="+description,
-						beforeSend : function (){
-							$('#deposit .loadSpinner').show();
-						},
-						success: function(msg){
-							$.updateTips("#depositMsg", "success", "<?=$Text['msg_deposit_success'];?>" );
-							resetDeposit();
-
-							$('#dailyStats tbody').xml2html('reload');
-							$('#list_account tbody').xml2html('reload');
-							gMadeDeposit = true;
-						},
-						error : function(XMLHttpRequest, textStatus, errorThrown){
-							$.updateTips("#depositMsg","error", XMLHttpRequest.responseText);
-						},
-						complete : function(msg){
-							$('#deposit_submit').button('enable');
-							$('#deposit .loadSpinner').hide();
-						}
-					}); //end ajax
-
-			});
-
-
-
 
 
 			/**
@@ -378,7 +256,6 @@
 						$('#list_account tbody tr:even').addClass('rowHighlight');
 					}
 			});
-
 
 
   			 //carts to validate today
@@ -404,7 +281,6 @@
 						$('#dailyStats .loadSpinner').hide();
 					}
 			});
-
 
   			 //negative ufs
 			 $('#negative_ufs tbody').xml2html('init',{
@@ -484,17 +360,13 @@
 			});
 
 
-
-
-
 			/**
-			 *	init ufs for account deposit select
+			 *	init ufs for account select
 			 */
 			$('#uf_account_select').hide();
 			$('#toggle_uf_account_select').click(function(){
 				$('#uf_account_select').toggle();
 			});
-
 
 
 			/**
@@ -573,9 +445,6 @@
 			});//end event listener for product list
 
 
-
-
-
 			/**
 			 * resets all input fields
 			 */
@@ -589,18 +458,8 @@
 				$('.showCartDate').removeClass('ui-state-highlight dim40').text('');
 				$('#uf_cart_select').val(-10);
 
-				$('#deposit_submit').button('disable');
-				$('#deposit_amount, #deposit_note').attr('disabled',true);
-
-
 			}
 
-			//reset the deposit pane
-			function resetDeposit(){
-				$('#deposit_amount').val('');
-				$('#deposit_note').val('');
-				$('.deposit_status').hide();
-			}
 
 			//realod the uf listing, update the (#) carts to be validated
 			function reloadValidationUfs(){
@@ -609,39 +468,6 @@
 					params : 'oper=getUFsCartCount'
 				});
 
-			}
-
-			/**
-			 *	if new cart is selected for validation, shows warning message if for previous
-			 *  cart no deposit has been made
-			 */
-			function checkMadeDeposit(depositUF, nextUF){
-
-				//check if last uf made deposit and show warning if not
-				if (!gMadeDeposit){
-
-					$.showMsg({
-						msg:"<?php echo $Text['msg_err_no_deposit'];?>",
-						width:600,
-						height:400,
-						buttons: {
-							"<?=$Text['btn_deposit_now'];?>":function(){
-								$('#uf_cart_select').val(depositUF).attr('selected',true);
-								$( this ).dialog( "close" );
-							},
-							"<?=$Text['btn_load_cart'];?>": function(){
-								gMadeDeposit = true; //simulate we made a deposit!
-								$('#uf_cart_select').val(nextUF).attr('selected',true);
-								$('#uf_cart_select').trigger('change');
-								$( this ).dialog( "close" );
-							}
-						},
-						type: 'warning'});
-
-					return false;
-				} else {
-					return true;
-				}
 			}
 
 
@@ -673,7 +499,6 @@
 
 			}
 
-
 			/*function getSelectedDate(){
 				return $('#selDate4Validation option:selected').val();
 			}*/
@@ -692,7 +517,6 @@
 
 
 			resetFields();
-			resetDeposit();
 
 	});  //close document ready
 </script>
@@ -705,8 +529,6 @@
 		<?php include "php/inc/menu.inc.php" ?>
 	</div>
 	<!-- end of headwrap -->
-
-
 
 	<div id="stagewrap" class="ui-widget">
 
@@ -730,7 +552,6 @@
 		    	</p>
 		    </div>
 		</div>
-
 
 		<div class="aix-layout-splitW60 floatLeft">
 			<div id="tabs">
@@ -791,29 +612,6 @@
 
 		<div class="aix-layout-splitW40 floatRight">
 
-			<div id="deposit" class="ui-widget">
-				<div class="aix-style-observer-widget ui-widget-content ui-corner-all" >
-					<h3 class="ui-widget-header ui-corner-all"><?php echo $Text['make_deposit'];?> <span class="insert_uf_id account">??</span><span class="loadAnim floatRight"><img class="loadSpinner" src="img/ajax-loader.gif"/></span></h3>
-					<p id="depositMsg"></p>
-					<div id="deposit_content">
-						<table class="tblForms">
-						<tr><td><?php echo $Text['amount'];?>:&nbsp;&nbsp;</td><td><input type="text" name="quantity" id="deposit_amount" class="inputTxtMiddle ui-widget-content ui-corner-all" value=""/></td></tr>
-						<tr><td><?php echo $Text['comment'];?>:&nbsp;&nbsp;</td><td><input type="text" name="description" id="deposit_note" class="inputTxtMiddle ui-widget-content ui-corner-all" value=""/></td></tr>
-						<tr>
-							<td></td>
-							<td><button id="deposit_submit"><?=$Text['btn_make_deposit']; ?></button></td>
-						</tr>
-
-						<tr>
-							<td colspan="2">
-
-							</td>
-						</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-
 			<div id="monitorFlows" class="ui-widget">
 				<div class="ui-widget-content ui-corner-all aix-style-observer-widget">
 					<h3 class="ui-widget-header ui-corner-all"><span class="left-icons ui-icon ui-icon-triangle-1-s"></span><?php echo $Text['latest_movements'];?> <span class="loadAnim floatRight"><img class="loadSpinner" src="img/ajax-loader.gif"/></span></h3>
@@ -841,9 +639,6 @@
 				</div>
 			</div>
 
-
-
-
 			<div id="monitorCarts" class="ui-widget">
 				<div class="ui-widget-content ui-corner-all aix-style-observer-widget">
 					<h3 class="ui-widget-header ui-corner-all"><span class="left-icons ui-icon ui-icon-triangle-1-s"></span><?php echo $Text['todays_carts']; ?><span class="loadAnim floatRight"><img class="loadSpinner" src="img/ajax-loader.gif"/></span></h3>
@@ -869,7 +664,6 @@
 					</table>
 				</div>
 			</div>
-
 
 			<div id="monitorUFs" class="ui-widget">
 				<div class="ui-widget-content ui-corner-all aix-style-observer-widget">
@@ -911,7 +705,6 @@
 				</div>
 			</div>
 
-
 			<div id="monitorStock" class="ui-widget hidden">
 				<div class="rightCol-Observer ui-widget-content ui-corner-all  aix-style-observer-widget">
 					<h3 class="ui-widget-header ui-corner-all"><span class="left-icons ui-icon ui-icon-triangle-1-s"></span><?php echo $Text['negativeStock'];?><span class="loadAnim floatRight hidden"><img class="loadSpinner" src="img/ajax-loader.gif"/></span></h3>
@@ -943,8 +736,6 @@
 
 		</div>
 
-
-
 	</div>
 	<!-- end of stage wrap -->
 </div>
@@ -974,7 +765,6 @@
 		</tbody>
 	</table>
 </div>
-
 
 </body>
 </html>
