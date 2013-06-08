@@ -9,8 +9,7 @@
   	<link rel="stylesheet" type="text/css"   media="print"  href="css/print.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/aixadacart/aixadacart.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/fgmenu/fg.menu.css"   />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
-
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
 
 	<?php if (isset($_SESSION['dev']) && $_SESSION['dev'] == true ) { ?>
 	    <script type="text/javascript" src="js/jquery/jquery.js"></script>
@@ -32,11 +31,8 @@
 
 	$(function(){
 
-
-
 	//decide what to do in which section
 	var what = $.getUrlVar('what');
-
 
 	//detect form submit and prevent page navigation; we use ajax.
 	$('form').submit(function() {
@@ -51,7 +47,6 @@
 	//layer inform that provider has passed closing date for order
 	var counterClosed = 0;
 	$("#providerClosedStatus").hide();
-
 
 	//init cart
 	$('#cartLayer').aixadacart("init",{
@@ -98,7 +93,6 @@
 			}
 		}
 	});
-
 
 	$('#product_list_provider tbody').xml2html("init");
 	$('#product_list_category tbody').xml2html("init");
