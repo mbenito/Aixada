@@ -20,13 +20,16 @@ class configuration_vars {
   /**
    * General variables
    */
-  public $default_language = 'es';
+  public $default_language = 'ca-va';
   
 
   /**
    * What is the name of this cooperative?
    */
-  public $coop_name = 'L\'Aixada';
+  public $coop_name = 'OlideCoop';
+  public $coop_cif = 'G55066559';
+  public $coop_street = 'C/ de les Monges,5';
+  public $coop_city = 'Girona';
 
   
   /**
@@ -36,8 +39,7 @@ class configuration_vars {
   public $db_host = 'localhost';
   public $db_name = 'aixada';
   public $db_user = 'aixada';
-  public $db_password = 'aixada';
-  
+  public $db_password = 'aixada';  
   
 
   /****************************************************************************
@@ -82,10 +84,7 @@ class configuration_vars {
    * emailing order reports and incidents will not work. 
    * @var boolean
    */
-  public $internet_connection = false; 
-  
-  
-  
+  public $internet_connection = false;  
   
   
   /**
@@ -103,8 +102,7 @@ class configuration_vars {
    * Default template for printing personal orders of household ...
    * @var string
    */
-  public $print_my_orders_template = 'order_model1.php';
-  
+  public $print_my_orders_template = 'order_model1.php';  
   
   
   /**
@@ -112,8 +110,7 @@ class configuration_vars {
    * Default template for printing bills of cooperative to members
    * @var unknown_type
    */
-  public $print_bill_template = 'bill_model1.php';
-  
+  public $print_bill_template = 'bill_model1.php';  
   
   
   /**
@@ -127,9 +124,7 @@ class configuration_vars {
    * 
    * diplays the language select on every page or not
    */
-  public $show_menu_language_select = false; 
-  
-   
+  public $show_menu_language_select = false;    
   
   
   /**
@@ -147,9 +142,7 @@ class configuration_vars {
   /**
    * format of emailed orders: just summarized "1" or just extended "2" or both "3"
    */
-  public $email_order_format = 3;
-  
-  
+  public $email_order_format = 3;  
   
   
   /**
@@ -163,10 +156,7 @@ class configuration_vars {
    * if left blank, the incidents will be send out to the email addresses of the 
    * users if available. 
    */
-  public $incidents_email_list = ""; 
-  
-  
-  
+  public $incidents_email_list = "";   
   
   
   /**
