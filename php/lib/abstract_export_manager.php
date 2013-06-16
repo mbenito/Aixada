@@ -1,11 +1,8 @@
 <?php
 
-
 require_once(__ROOT__ . 'php/external/FirePHPCore/lib/FirePHPCore/FirePHP.class.php');
 ob_start(); // Starts FirePHP output buffering
 $firephp = FirePHP::getInstance(true);
-
-
 
 require_once(__ROOT__ . 'php/lib/exceptions.php');
 require_once(__ROOT__ . 'local_config/config.php');
@@ -15,9 +12,7 @@ require_once(__ROOT__ . 'php/lib/gdrive.php');
 /**
  * @see Zend_Loader
  */
-//$dirs = array(__ROOT__.'php/external/ZendGdata-1.12.2/library'); 
-
-
+//$dirs = array(__ROOT__.'php/external/ZendGdata-1.12.2/library');
 
 class abstract_export_manager {
   
@@ -60,9 +55,7 @@ class abstract_export_manager {
 	 * The file name the export data will be saved to
 	 * @var string
 	 */
-	protected $filename = "";
-	
-	
+	protected $filename = "";	
 
 	
 	/**
@@ -70,8 +63,7 @@ class abstract_export_manager {
 	 * Format data should be exported to: CSV | XML
 	 * @var string
 	 */
-	protected $format = "csv";
-	
+	protected $format = "csv";	
 	
 	
 	/**
@@ -106,8 +98,7 @@ class abstract_export_manager {
 
     	//get the data from the database
     	$this->read_db_table();
-    } 
-    
+    }    
     
     
     /**
@@ -116,8 +107,7 @@ class abstract_export_manager {
      * exported. Returns xml result set.
      */
     protected function read_db_table(){
-    }
-    
+    }    
     
     
     public function export($publish=false, $format='csv', $email='', $pwd=''){
@@ -145,8 +135,7 @@ class abstract_export_manager {
     			
     	}
     	
-    }
-    
+    }    
     
     
     /**
@@ -377,12 +366,7 @@ class abstract_export_manager {
 	    
 		$this->xml_result = $xml_out; 
 		
-	}
-    
-	
+	}	
 
 }
-
-
-
 ?>
