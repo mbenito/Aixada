@@ -352,10 +352,6 @@ function printXML($str) {
   echo $newstr;
 }
 
-
-
-
-
 function HTMLwrite($strHTML, $filename)
 {
   if(is_writeable($filename)) {
@@ -386,7 +382,6 @@ function get_config_menu($user_role)
     return $XML . '</navigation>';
 }
 
-
 function get_import_rights($db_table_name)
 {
 	//get the import rights for the db table and fields
@@ -405,8 +400,6 @@ function get_import_rights($db_table_name)
 	return $xml . "</rows>";
 }
 
-
-
 function get_field_options_live($table, $field1, $field2, $field3='')
 {
     global $Text;
@@ -421,9 +414,7 @@ function get_field_options_live($table, $field1, $field2, $field3='')
 	$strSQL .= ' order by name';
     } else if (in_array($table, array('aixada_orderable_type'))) {
 	$strSQL .= ' order by description';
-    }
-
-   
+    }   
 	if ($field3 != ''){
          $rs = DBWrap::get_instance()->Execute($strSQL, $field1, $field2, $field3, $table);    	       	
         } else {
@@ -496,7 +487,7 @@ function existing_languages()
 
 function existing_languages_XML()
 {
-	$static = false; 
+	$static = true; 
     // We require that a line of the form 
     // $Text['es_es'] = 'Español'
     // exists in each language file
