@@ -3,33 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Aixada - Bill - Member - info</title>
+	<title>OlideCoop - Bill - Member - Info</title>
 
 
 	<style type="text/css">
-		body 				{font-family:arial; font-size:10px; }
-		table 				{width:100%; border-collapse:collapse;}
-		thead				{background:#efefef;}
-		th	 				{border:solid 1px black; padding:2px 5px; background:#efefef;}
-		td.headc	 		{border:solid 1px black; padding:2px 5px; background:#efefef; text-align:center;}
-		td 					{padding:3px;}
+		body 			{font-family:arial; font-size:10px; }
+		table 			{width:100%; border-collapse:collapse;}
+		thead			{background:#efefef;}
+		th	 		{border:solid 1px black; padding:2px 5px; background:#efefef;}
+		td.headc	 	{border:solid 1px black; padding:2px 5px; background:#efefef; text-align:center;}
+		td 			{padding:3px;}
 		
-		.section 			{width:90%; clear:both; margin-bottom:10px;}
+		.section 		{width:90%; clear:both; margin-bottom:10px;}
 		.txtAlignRight		{text-align:right;}
 		.txtAlignCenter		{text-align:center;}
-		.tdAlignTop			{vertical-align:top;}
+		.tdAlignTop		{vertical-align:top;}		
 		
+		.cellBorderList td	{border:solid 1px black; padding:2px 5px;}		
 		
-		.cellBorderList td	{border:solid 1px black; padding:2px 5px;}
-		
-		
-		
-		div#logo			{width:500px; height:180px; float:left; border:1px solid black; margin-bottom:20px;}
-		div#address			{}
+		div#logo		{width:500px; height:180px; float:left; border:1px solid black; margin-bottom:20px;}
+		div#address		{}
 		div#bill_info		{width:48%; margin-right:10px; float:left;}
-		div#member_info		{width:48%; float:right; margin-bottom:10px;}
-		
-		
+		div#member_info		{width:48%; float:right; margin-bottom:10px;}		
 		
 	</style>
 	
@@ -70,9 +65,6 @@
 						
 					}
 			});
-
-
-	
 			
 
 		}); //close document ready
@@ -80,21 +72,20 @@
 	
 </head>
 <body>
-	
+
 	<div id="header" class="section">
 		<div id="logo">
-			<img id="coopLogo" alt="coop logo" src="../img/tpl_header_logo.png" width="500" height="180"/>
+			<img alt="coop logo" src="../img/tpl_header_logo.png" width="500" height="180"/>
 		</div>
 		<div id="address">
-			<h2 class="txtAlignRight">COOPERATIVA NAME</h2>
-			<h2 class="txtAlignRight">CIF/NIF: F650000</h2>
-			<p class="txtAlignRight">Street<br/>
-			Zip City<br/>
-			email@bla.com
+			<h2 class="txtAlignRight"><?php echo $Text['coop_name']; ?></h2>
+			<h2 class="txtAlignRight">CIF/NIF: <?php echo $Text['coop_cif']; ?></h2>
+			<p class="txtAlignRight"><?php echo $Text['coop_street']; ?><br/>
+						 <?php echo $Text['coop_city']; ?><br/>
+						 <?php echo $Text['admin_mail']; ?>
 			</p>
 		</div>
 	</div>
-
 	
 				<table id="tbl_incidents" class="ui-widget">
 					<thead>
