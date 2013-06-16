@@ -1,13 +1,9 @@
 <?php
 
-
 require_once(__ROOT__ . 'php/inc/database.php');
 require_once(__ROOT__ . 'local_config/config.php');
-require_once ('general.php');
+require_once('general.php');
 require_once(__ROOT__ . 'local_config/lang/'.get_session_language() . '.php');
-
-
-
 
 /**
  * 
@@ -85,9 +81,7 @@ function create_user_member($uf_id){
 function extract_user_form_values(){
 	
 	$fields["login"] = get_param('login','');
-	$fields["password"] = crypt(get_param('password',''), "ax");
-	
-	
+	$fields["password"] = crypt(get_param('password',''), "ax");	
 	$fields["custom_member_ref"] = get_param('custom_member_ref','');
 	$fields["name"] = get_param('name');
 	$fields["nif"] = get_param('nif','');
@@ -101,11 +95,9 @@ function extract_user_form_values(){
 	$fields["active"] = isset($_REQUEST['member_active'])? 1:0; //this is a checkbox; gets send when checked, otherwise not
 	$fields["participant"] = isset($_REQUEST['participant'])? 1:0;
 	$fields["adult"] = get_param('adult',1);	
-	
 	$fields["language"] = get_param('language','en');
 	$fields["gui_theme"] = get_param('gui_theme','start');
-	$fields["email"] = get_param('email','');
-	
+	$fields["email"] = get_param('email','');	
 	$fields["uf_id"] = get_param('uf_id',0);
 	
 	return $fields;
@@ -197,17 +189,15 @@ function reset_password($user_id)
 		
 		while ($row = $rs->fetch_assoc()) {
       		$toEmail = $row['email'];
-    	}
+    	}    	
     	
-    	
-		$subject = "Aixada Reset Password";
+		$subject = "OlideCoop Password Reset";
 		$message = "Your password has been reset. The new password is " . $newPwd ."\n\n Please logon with the new password. Under My Account, Settings you can change your password.";
 		$from = configuration_vars::get_instance()->admin_email;
 		$headers = "From: $from \r\n";
 		$headers .= "Reply-To: $from \r\n";
 		$headers .= "Return-Path: $from\r\n";
-		$headers .= "X-Mailer: PHP \r\n";
-		
+		$headers .= "X-Mailer: PHP \r\n";		
 		
 		if (mail($toEmail,$subject,$message,$headers)){
 			echo $Text['msg_pwd_emailed'];			
@@ -215,8 +205,7 @@ function reset_password($user_id)
 		} else {
 			echo $Text['msg_err_emailed'];		
 			
-		}
-    	
+		}    	
 
     } else {
     	
@@ -224,8 +213,6 @@ function reset_password($user_id)
     	
     }
 }
-
-
 
 function createPassword($length=8) {
 	$chars = "234567890abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -237,12 +224,5 @@ function createPassword($length=8) {
 	}
 	return $password;
 }
-
-
-
-
-
-
-
 	
 ?>
