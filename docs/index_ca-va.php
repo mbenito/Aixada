@@ -14,28 +14,28 @@
 <h1>FAQ</h1>
 <a name="top"></a>
 <ol>
-	<li><a href="#printOrder">Cómo imprimir un pedido</a></li>
-	<li><a href="#anyOtherTheme">any other topic...</a></li>
+	<li><a href="#printOrder">Com imprimir una comanda</a></li>
+	<li><a href="#anyOtherTheme">Altres consultes...</a></li>
 </ol>
 
 
 <a name="printOrder"></a>
 <div class="faq-item">
-<h2>How to print an order</h2>
-<p>Explanation starts there ...</p>
+<h2>Com imprimir una comanda</h2>
+<p>Aquesta ajuda estarà disponible en breu ...</p>
 
 
-<a href="#top">Back to top</a>
+<a href="#top">Tornar a l'inici</a>
 </div>
 
 
 <a name="anyOtherTheme"></a>
 <div class="faq-item">
-<h2>Any other title</h2>
+<h2>Altres consultes</h2>
 <p>Explanation starts there ...</p>
 
 
-<a href="#top">Back to top</a>
+<a href="#top">Tornar a l'inici</a>
 </div>
 
 
