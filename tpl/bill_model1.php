@@ -3,37 +3,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Aixada - Bill - Member - info</title>
+	<title>OlideCoop - Bill - Member - Info</title>
 
 
 	<style type="text/css">
-		body 				{font-family:arial; font-size:10px;}
-		table 				{width:100%; border-collapse:collapse;}
+		body 			{font-family:arial; font-size:10px;}
+		table 			{width:100%; border-collapse:collapse;}
 		
-		.section 			{width:90%; clear:both; margin-bottom:10px;}
+		.section 		{width:90%; clear:both; margin-bottom:10px;}
 		.txtAlignRight		{text-align:right;}
 		.txtAlignCenter		{text-align:center;}
-		.tdAlignTop			{vertical-align:top;}
-		.bold				{font-weight:bold;}
-		.halfWidth			{width:48%; float:left;}
-		.width-50			{width:50px;}	
-		.width-80			{width:80px;}	
+		.tdAlignTop		{vertical-align:top;}
+		.bold			{font-weight:bold;}
+		.halfWidth		{width:48%; float:left;}
+		.width-50		{width:50px;}	
+		.width-80		{width:80px;}	
 		.memberTitle		{background-color:#efefef; text-align:center; margin-top:0px; padding:2px; font-weight:bold; margin-bottom:-5px; text-transform:uppercase; }	
-		.b4					{border:2px solid black;}	 
-		.p4-5				{padding:5px;}
-		.hidden				{display:none;}
+		.b4			{border:2px solid black;}	 
+		.p4-5			{padding:5px;}
+		.hidden			{display:none;}
 		.cellBorderList td	{border:solid 1px black; padding:2px 5px;}
 		.cellBorderList th	{border:solid 1px black; padding:2px 5px; background:#efefef;}
-		.billHead			{text-transform:uppercase;}
-		.revTaxCol			{display:none;}
+		.billHead		{text-transform:uppercase;}
+		.revTaxCol		{display:none;}
 		
 		
-		div#logo			{width:500px; height:180px; float:left; border:1px solid black; margin-bottom:20px;}
-		div#address			{}
+		div#logo		{width:500px; height:180px; float:left; border:1px solid black; margin-bottom:20px;}
+		div#address		{}
 		div#bill_info		{width:48%; margin-right:10px; float:left;}
-		div#member_info		{width:48%; float:right; margin-bottom:10px;}
-		
-		
+		div#member_info		{width:48%; float:right; margin-bottom:10px;}		
 		
 	</style>
 	
@@ -42,9 +40,7 @@
 
    	<script type="text/javascript" src="../js/aixadautilities/jquery.aixadaXML2HTML.js" ></script>
 	<script type="text/javascript" src="../js/aixadautilities/jquery.aixadaUtilities.js" ></script>
-	<script type="text/javascript" src="../js/aixadautilities/loadPDF.js" ></script>
-	
- 
+	<script type="text/javascript" src="../js/aixadautilities/loadPDF.js" ></script> 
 
 	<script type="text/javascript">
 		$(function(){
@@ -56,8 +52,6 @@
 			//"F" opens the pdf in browser window, "D" forces file download
 			var outputFormat =  $.getUrlVar('outputFormat');
 			
-
-			
 			//prevent error msg when opening saved page
 			//if (window.opener == null) return false;
 
@@ -65,7 +59,6 @@
 			var date = $.getUrlVar('date');
 			var operatorName = decodeURIComponent($.getUrlVar('operatorName'));
 			var operatorUf = $.getUrlVar('operatorUf');
-
 			
 			$('#cart_id').text(shopId);
 			$('#date_for_shop').text(date);
@@ -108,7 +101,6 @@
 					
 				}
 			});
-
 			
 
 			//load load member info
@@ -119,25 +111,23 @@
 				rowComplete : function (rowIndex, row){ 
 				}
 			});
-
 			
 
 		}); //close document ready
 	</script>
 	
 </head>
-<body>
-	
+<body>	
 	<div id="header" class="section">
 		<div id="logo">
-			<img id="coopLogo" alt="coop logo" src="../img/tpl_header_logo.png" width="500" height="180"/>
+			<img alt="coop logo" src="../img/tpl_header_logo.png" width="500" height="180"/>
 		</div>
 		<div id="address">
-			<h2 class="txtAlignRight">COOPERATIVA NAME</h2>
-			<h2 class="txtAlignRight">CIF/NIF: F650000</h2>
-			<p class="txtAlignRight">Street<br/>
-			Zip City<br/>
-			email@bla.com
+			<h2 class="txtAlignRight"><?php echo $Text['coop_name']; ?></h2>
+			<h2 class="txtAlignRight">CIF/NIF: <?php echo $Text['coop_cif']; ?></h2>
+			<p class="txtAlignRight"><?php echo $Text['coop_street']; ?><br/>
+						 <?php echo $Text['coop_city']; ?><br/>
+						 <?php echo $Text['admin_mail']; ?>
 			</p>
 		</div>
 	</div>
@@ -248,7 +238,4 @@
 		
 	</div>
 </body>
-
-
-
 </html>
