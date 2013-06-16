@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css"   media="screen" href="css/aixada_main.css" />
   	<link rel="stylesheet" type="text/css"   media="print"  href="css/print.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/fgmenu/fg.menu.css"   />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
 
 	<?php if (isset($_SESSION['dev']) && $_SESSION['dev'] == true ) { ?> 
 	    <script type="text/javascript" src="js/jquery/jquery.js"></script>
@@ -33,10 +33,8 @@
 		//saves selected uf row 
 		var gSelUfRow = null;
 
-
 		//saves currently selecte member row
 		var gSelMemberRow = null;
-
 
 		//var gEmptyMemberForm = $('#uf_detail_member_list').children(':first').clone();
 
@@ -44,17 +42,13 @@
 		var gFormComplete = false; 
 
 		//should be changed to non-global 
-		var gMentorUf = -1; 
-		
-
+		var gMentorUf = -1;
 
 		//show/hide reset pwd. 
 		var isAdmin = "<?=$_SESSION['userdata']['current_role'];?>";
-		isAdmin = (isAdmin == "Hacker Commission")? true:false; 
-
+		isAdmin = (isAdmin == "Hacker Commission")? true:false;
 			
-		$('#member_listing').tabs();
-		
+		$('#member_listing').tabs();		
 		
 		//load available languages
 		 $("#languageSelect")
@@ -81,8 +75,6 @@
 
 					}
 		});
-
-
 			
 		
 		/*******************************************
@@ -110,8 +102,7 @@
 				$('.loadSpinner').hide();
 				$('#uf_list tbody tr:even').addClass('rowHighlight'); 
 			}
-		});	
-
+		});
 
 		
 		//handle events on uf list
@@ -146,8 +137,6 @@
 				switchTo('ufMemberView');
 
 			});
-		
-
 
 		
 		//load mentor uf select listing
@@ -200,8 +189,6 @@
 				submitUF(gSelUfRow.attr('ufid'));
 			})
 			.hide();
-		
-
 				
 
 		//create new uf	 
@@ -219,7 +206,6 @@
 				}
 			}
 		});
-
 
 
 		//activate / deactive uf
@@ -254,7 +240,6 @@
 				e.stopPropagation(); 
 
 		});
-
 
 
 	    /**
@@ -395,8 +380,6 @@
 			   	}
 			});
 		}
-
-
 		
 
 		/*******************************************
@@ -427,7 +410,6 @@
 		});
 
 
-
 		//handle events on uf list
 		$('#member_list tbody tr, #member_list_search tbody tr')
 			.live('mouseenter', function(){
@@ -452,7 +434,6 @@
 				
 				switchTo('memberView');				
 			});
-
 		
 
 		//init the non / new member listing
@@ -490,7 +471,6 @@
 				$('.loadSpinner').hide(); 
 			}
 		});
-
 
 		//member search function
 		$("#search").keyup(function(e){
@@ -742,8 +722,6 @@
 			.live('focus', function(e){
 				$(this).removeClass('ui-state-error');
 			});
-
-
 		
 
 		/**
@@ -918,7 +896,6 @@
 			}
 		}
 
-
 			
 		/**
 		 * 	pages contained in one: uf list/edit, members list/edit, 
@@ -989,10 +966,7 @@
 			 })
     		.click(function(e){
 				switchTo('overview'); 
-    		});
-
-
-		
+    		});	
 		
 
 		switchTo('overview');
@@ -1006,8 +980,7 @@
 	<div id="headwrap">
 		<?php include "php/inc/menu.inc.php" ?>
 	</div>
-	<!-- end of headwrap -->
-	
+	<!-- end of headwrap -->	
 	
 	<div id="stagewrap" class="ui-widget">
 	
@@ -1025,8 +998,6 @@
 		    </div>	  	
 		  
 		</div>
-		
-		
 		
 		
 		<!-- 
@@ -1121,8 +1092,7 @@
 							</tr>						
 						</tbody>
 				</table>
-			</div>
-			
+			</div>			
 			
 			<div id="tabs-4" class="ui-widget-content ui-corner-all">
 				<table id="member_list_unassigned" class="tblListingDefault">
@@ -1157,9 +1127,7 @@
 			</div>
 			
 			
-		</div><!-- END OF MEMBER LISTING TABS -->
-		
-		
+		</div><!-- END OF MEMBER LISTING TABS -->		
 		
 		<div id="uf_member_detail" class="ui-widget">
 			<div class="ui-widget-content ui-corner-all ufDetailElements adaptHeight">
@@ -1197,8 +1165,7 @@
 				</div>
 				
 			</div>
-			<p>&nbsp;</p>
-			
+			<p>&nbsp;</p>		
 			
 			
 			<!-- 
@@ -1219,9 +1186,7 @@
 				<?php include('php/inc/memberuf.inc.php');?>
 			
 			</div>		
-		</div><!-- end uf_detail_member_list -->
-		
-		
+		</div><!-- end uf_detail_member_list -->		
 		
 		<!-- 
 					CREATE NEW MEMBER 
@@ -1348,13 +1313,7 @@
 					</form>
 					<p>&nbsp;</p>
 			</div>		
-		</div><!-- end member_create -->
-		
-			
-		
-		
-		
-		
+		</div><!-- end member_create -->		
 		
 	</div>
 	<!-- end of stage wrap -->
