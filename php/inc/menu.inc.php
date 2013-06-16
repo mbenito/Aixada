@@ -48,20 +48,18 @@
 	</p>
 </div>
 
-
 <div class="ui-widget-header ui-corner-all" id="menuBgBar">
 <div  id="topMenu">
-<a tabindex="0" href="index.php" 	id="navHome" class="menuTop"><?php echo $Text['nav_home'];?></a>
-<a tabindex="1" href="torn.php" 	id="navWizard" class="menuTop"><?php echo $Text['nav_wiz'];?></a>
-<a tabindex="2" href="shop_and_order.php?what=Shop" 	id="navShop" class="menuTop"><?php echo $Text['nav_shop'];?></a>
-<a tabindex="3" href="shop_and_order.php?what=Order" 		id="navOrder" class="menuTop"><?php echo $Text['nav_order'];?></a>
-<a tabindex="4" href="#" 			id="navManage" class="menuTop"><?php echo $Text['nav_mng'];?></a>
+<a tabindex="0" href="index.php" id="navHome" class="menuTop"><?php echo $Text['nav_home'];?></a>
+<a tabindex="1" href="torn.php" id="navWizard" class="menuTop"><?php echo $Text['nav_wiz'];?></a>
+<a tabindex="2" href="shop_and_order.php?what=Shop" id="navShop" class="menuTop"><?php echo $Text['nav_shop'];?></a>
+<a tabindex="3" href="shop_and_order.php?what=Order" id="navOrder" class="menuTop"><?php echo $Text['nav_order'];?></a>
+<a tabindex="4" href="#" id="navManage" class="menuTop"><?php echo $Text['nav_mng'];?></a>
 <a tabindex="5" href="#" id="navReport" class="menuTop"><?php echo $Text['nav_report'];?></a>
 <a tabindex="6" href="#" id="navIncidents" class="menuTop"><?php echo $Text['nav_incidents'];?></a>
 <a tabindex="7" href="#" id="navMyAccount" class="menuTop"><?php echo $Text['nav_myaccount'];?></a>
 </div>
 </div>
-
 
 <div id="navWizardItems" class="hidden">
 	<ul>
@@ -73,9 +71,10 @@
 </div>
 <div id="navManageItems" class="hidden">
 	<ul>
-		<li><a href="manage_ufmember.php"><?php echo $Text['uf_short'];?> & <?php echo $Text['nav_mng_member'];?></a>
+		<li><a href="#"><?php echo $Text['nav_mng_users'];?></a>
 			<ul>
-			<li>
+				<li><a href="manage_ufmember.php"><?php echo $Text['uf_short'];?> & <?php echo $Text['nav_mng_member'];?></a>
+				<li>
             <?php 
             	if($_SESSION['userdata']['current_role'] == 'Hacker Commission') {
      				echo '<a href="activate_all_roles.php">';
@@ -83,18 +82,18 @@
      				echo '<a href="activate_roles.php">';
  				}  
  				echo $Text['nav_mng_roles'];?>
- 		</a></li>
+ 				</a></li>
 			</ul>
 		</li>
 		
 		<li><a href="manage_providers.php"><?php echo $Text['nav_mng_providers'];?></a></li>
-		<li><a href="manage_providers.php"><?php echo $Text['nav_mng_products'];?></a>
+		<li><a href="#"><?php echo $Text['nav_mng_products'];?></a>
 			<ul>
 				<li><a href="manage_orderable_products.php"><?php echo $Text['nav_mng_deactivate'];?></a></li>
 				<li><a href="manage_table.php?table=aixada_unit_measure"><?php echo $Text['nav_mng_units'];?></a></li>
 				<li><a href="manage_stock.php"><?php echo $Text['nav_mng_stock'];?> </a></li>
 				<li><a href="manage_table.php?table=aixada_iva_type"><?php echo $Text['nav_mng_iva']; ?></a></li>
-				
+				<li><a href="manage_table.php?table=aixada_rev_tax_type"><?php echo $Text['nav_mng_rev_tax']; ?></a></li>
 			</ul>
 		</li>
 		<li><a href="manage_orders.php"><?php echo $Text['nav_mng_orders'];?></a></li>
@@ -103,7 +102,12 @@
 				<li><a href="manage_preorders.php"><?php echo $Text['nav_mng_preorder'];?></a></li>
 			</ul>
 		</li-->
-		<li><a href="manage_money.php"><?php echo $Text['nav_mng_money'];?></a>
+		<li><a href="#"><?php echo $Text['nav_mng_money'];?></a>
+			<ul>
+				<li><a href="validate.php"><?php echo $Text['nav_wiz_validate'];?></a></li>
+				<li><a href="manage_money.php"><?php echo $Text['nav_wiz_cashbox'];?></a></li>
+			</ul>
+
 		</li>
 		<li><a href="#TODO"><?php echo $Text['nav_mng_admin'];?></a>
 			<ul>
