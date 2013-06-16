@@ -8,8 +8,7 @@
 	<link rel="stylesheet" type="text/css"   media="screen" href="css/aixada_main.css" />
   	<link rel="stylesheet" type="text/css"   media="print"  href="css/print.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/fgmenu/fg.menu.css"   />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
-	
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>	
 
     <?php if (isset($_SESSION['dev']) && $_SESSION['dev'] == true ) { ?> 
 	      <script type="text/javascript" src="js/jquery/jquery.js"></script>
@@ -22,14 +21,10 @@
    	<?php  } else { ?>
 	    <script type="text/javascript" src="js/js_for_manage_money.min.js"></script>
     <?php }?>
-
    
 	<script type="text/javascript">
 	
 	$(function(){
-
-
-
 		
 			/**
 			 * 	account listing
@@ -173,9 +168,7 @@
   	  	  		} else {
 	  	  	  		$('#withdrawal_submit').button('disable');
   	  	  	  	}
-  	  		} 			
-
-
+  	  		}
   			
   			/**
   			 *	reset deposit / withdrawal
@@ -184,15 +177,19 @@
 				var n = new Number(0); 
 				$('#deposit_amount').val(n.toFixed(2));
 				$('#sel_deposite_type').trigger("change");
+				$(document).ready(function() { // execute when everything is loaded
+				    $('#deposit_description').val(''); // set the value
+				});
 			}
 
 			function resetWithdrawal(){
 				var n = new Number(0); 
 				$('#withdraw_amount').val(n.toFixed(2));
 				$('#sel_withdraw_type').trigger("change");
-			}
-
-			
+				$(document).ready(function() { // execute when everything is loaded
+				    $('#withdraw_description').val(''); // set the value
+				});
+			}			
 
   			$('#deposit_amount')
   				.keyup(function(e){
@@ -211,15 +208,13 @@
   	  				var amount = $.checkNumber($('#withdraw_amount'), '', 2);
   	  				$('#withdraw_amount').val(amount);
   	  	  		})
-
-
   			
   	
   			/**
   			 *	DEPOSIT SUBMIT
   			 */
 			$('#deposit_submit').button({
-					disabled:true,
+					disabled:false,
 					icons: {
 		                primary: "ui-icon-arrowthick-1-s"
 		            }
@@ -260,7 +255,7 @@
   			 */
 			$('#withdrawal_submit')
 				.button({
-					disabled:true,
+					disabled:false,
 					icons: {
 	                	primary: "ui-icon-arrowthick-1-n"
 	            	}
@@ -296,7 +291,9 @@
 
 			});
 
-			
+  			/**
+  			 *	NEW BALANCE SUBMIT
+  			 */			
 			$('#correct_balance').button({
 				disabled:false,
 				icons: {
@@ -306,10 +303,6 @@
 				$("#dialog_c_balance").dialog("open");
 
 			});
-
-					
-
-
   			 
   			$("#dialog_c_balance").dialog({
   				autoOpen: false,
@@ -353,10 +346,7 @@
   						$( this ).dialog( "close" );
   					}
   				}
-  			});		
-
-
-
+  			});
 
   			//$('button').button();
 
@@ -390,56 +380,14 @@
 				.button()
 				.click(function(e){
 					$("#dialog_c_balance").dialog('open');
-  				});
-
-  			
-  			
-
-  			//retrieve balance of global accounts
-  			$.ajax({
-					type: "POST",
-					url : "php/ctrl/Account.php?oper=globalAccountsBalance",
-					dataType : 'xml',
-			        success :  function(xml){
-
-				        	$(xml).find('row').each(function(){
-					        	
-				        		var id = $(this).find('account_id').text();
-					        	var balance = $(this).find('balance').text();
-
-					        	var css = (new Number(balance) > 0)? 'aix-style-pos-balance':'aix-style-neg-balance';
-					        	
-					        	switch(id){
-					        		case '-3':
-						        		$('.setTotalCashbox').addClass(css).text(balance);
-						        		break;
-					        		case '-2':
-					        			$('.setTotalConsum').addClass(css).text(balance);
-					       				break;
-					        		case '-1':
-					        			$('.setTotalMaintenance').addClass(css).text(balance);
-					       				break;
-					        	}
-
-					        });
-	
-					}, 
-					error : function(XMLHttpRequest, textStatus, errorThrown){
-						$.showMsg({
-							msg:XMLHttpRequest.responseText,
-							type: 'error'});
-				   	} 		
-			});
-
-	
+  				});	
 
 			function switchTo(section){
-				
-				//$('.uf_account_select option[value="-10"]').attr('selected','selected')
 				
 				//reset selects; 
 				$('#sel_withdraw_type option[value="-1"]').attr('selected','selected');
 				$('#sel_deposite_type option[value="-1"]').attr('selected','selected');
+				$('.uf_account_select option[value="-10"]').attr('selected','selected');
 
 				resetDeposit();
 				resetWithdrawal();
@@ -449,6 +397,40 @@
 				case 'overview':
 					$('.depositElements, .withdrawElements, .movementElements').hide();
 					$('.overviewElements').fadeIn(1000);
+  					//retrieve balance of global accounts
+  					$.ajax({
+						type: "POST",
+						url : "php/ctrl/Account.php?oper=globalAccountsBalance",
+						dataType : 'xml',
+			        		success :  function(xml){
+
+				        		$(xml).find('row').each(function(){
+					        	
+				        			var id = $(this).find('account_id').text();
+					        		var balance = $(this).find('balance').text();
+					        		var css = (new Number(balance) > 0)? 'aix-style-pos-balance':'aix-style-neg-balance';
+					        	
+					        		switch(id){
+					        			case '-3':
+						        			$('.setTotalCashbox').addClass(css).text(balance);
+						        			break;
+					        			case '-2':
+					        				$('.setTotalConsum').addClass(css).text(balance);
+					       					break;
+					        			case '-1':
+					        				$('.setTotalMaintenance').addClass(css).text(balance);
+					       					break;
+					        			}
+
+					        		});
+		
+							}, 
+							error : function(XMLHttpRequest, textStatus, errorThrown){
+								$.showMsg({
+									msg:XMLHttpRequest.responseText,
+									type: 'error'});
+				   				} 		
+					});
 					break;
 					
 				case 'deposit':
