@@ -15,23 +15,23 @@
 			total : "Total",
 			total_net : "Sense impostos",
 			subtotal : "Subtotal",
-			ivaTax : "IVA",
+			ivaTax : "Impost Valor Afegit",
 			ivaTaxAbbrev : "IVA",
-			ivaTaxInclAbbrev : "incl. IVA",		
+			ivaTaxInclAbbrev : "IVA incl.",		
 			revTax	: "Impost revolucionari",
-			revTaxAbbrev: "ImpRev",
-			revTaxInclAbbrev: "incl. ImpRev",
+			revTaxAbbrev: "Imp.Rev",
+			revTaxInclAbbrev: "Imp.Rev incl.",
 			tblCol : {
 				productName : "Nom",
 				providerName : "Proveïdor",
 				quantity : "Quantitat",
-				quantityAbbrev : "Qu",
+				quantityAbbrev : "Quant.",
 				unit : "Unitat",
 			},
 			msg : {
-				saveSuccess : "S'han desat correctement els productes!",
-				errInput	: "La cantidad ha de ser numeric!",
-				orderClosed : "Aquet producto forma part de una comanda ya tancada y no es pot modificar mes."
+				saveSuccess : "S'han desat correctament els productes!",
+				errInput : "La quantitat ha de ser numèrica!",
+				orderClosed : "Aquest producte forma part d'una comanda ja tancada i no es pot modificar."
 				
 			}
 		
