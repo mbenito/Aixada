@@ -4,8 +4,6 @@
  * @package Aixada
  */ 
 
-
-
 require_once(__ROOT__ . 'local_config/config.php');
 require_once(__ROOT__ . 'php'.DS.'utilities'.DS.'general.php');
 
@@ -15,8 +13,6 @@ if (!isset($_SESSION)) {
 
 require_once(__ROOT__ . 'local_config'.DS.'lang'.DS. get_session_language() . '.php');
 require_once(__ROOT__ . 'php/inc/database.php');
-
-
 
 /**
  * The class that manages reports
@@ -117,8 +113,8 @@ class report_manager {
     $headings = array('product_name'  => $Text['product_name'], 
 		      'uf'            => 'UF',
 		      'qty'           => $Text['quantity']);
-    $totals = array('total_quantity'          => $Text['total_qty'],
-		    'total_price'        => $Text['total_price'],
+    $totals = array('total_quantity'  => $Text['total_qty'],
+		    'total_price'     => $Text['total_price'],
                     'iva'             => $Text['iva']);
     $styles   = array('product_name'  => 'style1',
 		      'uf'            => 'style2',
@@ -154,8 +150,6 @@ class report_manager {
       DBWrap::get_instance()->free_next_results();
       return $result;
   }
-
-
 
   public function compact_preorders_for_provider($provider_id)
   {
@@ -237,8 +231,7 @@ class report_manager {
       if (!$inhandle)
           throw new Exception("Couldn't open {$headerfile} for reading");
       $header = fread($inhandle, 4096);
-      $report_files = array();
-      
+      $report_files = array();      
       
       foreach($prov_ids as $id) {
           $report_file =  __ROOT__. 'local_config/orders/comanda.' 
@@ -247,6 +240,7 @@ class report_manager {
           $report_file = htmlentities($report_file);
           $report_files[] = $report_file;
           $outhandle = @fopen($report_file, 'w');
+
           if (!$outhandle)
               throw new Exception("Couldn't open {$report_file} for writing");
           $html = $header 
@@ -296,14 +290,7 @@ class report_manager {
       }
       $zip->close();
       return $filename;
-  }
-  
-
-  
-  
-  
-  
-  
+  }  
   
  public function bundle_orders($arr_providers,$arr_dates, $arr_order_ids)
   {
@@ -345,9 +332,7 @@ class report_manager {
       $total_price = array();
 
        if (  count($arr_provider_ids)!= count($arr_dates) )
-       	 throw new Exception("Array size mismatch in report_manager.php");
-
-       	 
+       	 throw new Exception("Array size mismatch in report_manager.php");       	 
        	 
       for ($i=0; $i < count($arr_provider_ids); ++$i) {
       	$rs = do_stored_query('get_detailed_order_info', 0,  $arr_provider_ids[$i], $arr_dates[$i]);
@@ -368,8 +353,7 @@ class report_manager {
       if (!$inhandle)
           throw new Exception("Couldn't open {$headerfile} for reading");
       $header = fread($inhandle, 4096);
-      $report_files = array();
-      
+      $report_files = array();      
       
       //foreach($arr_providers as $id) {
       for ($i=0; $i < count($arr_provider_ids); ++$i) {
@@ -419,9 +403,7 @@ class report_manager {
           
       }      
       return $report_files;      
-  }
-  
-  
+  }  
   
   /**
    * This function creates HTML code from a rowset iterator.
