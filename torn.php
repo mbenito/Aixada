@@ -31,16 +31,13 @@
 
 				btnId = $(this).attr('id'); 
 				switch(btnId){
-					case 'btn_nav_validate':
-						window.location.href = "validate.php";
-						break;
 						
 					case 'btn_nav_revise':
 						window.location.href = "manage_orders.php?filter=ordersForToday&lastPage=torn.php";
 						break;
 
-					case 'btn_nav_cash':
-						window.location.href = "manage_money.php"; 
+					case 'btn_nav_incidents':
+						window.location.href = "incidents.php";
 						break;
 
 					case 'btn_nav_stock':
@@ -56,15 +53,10 @@
 						break;
 				}
 
-			});
-
-
-
-		
+			});		
 			
 	});  //close document ready
 </script>
-
 
 </head>
 <body>
@@ -79,17 +71,6 @@
 		<div class="aix-layout-center60 ui-widget"> 
 			
 			<div class="aix-style-entry-widget">
-				<table>
-					<tr>
-						<td>
-							<button class="aix-layout-fixW150" id="btn_nav_validate"><?php echo $Text['nav_wiz_validate']; ?></button>
-						</td>
-						<td><p><?php echo $Text['desc_validate']; ?></p></td>
-					</tr>
-				</table>
-			</div>
-	
-			<div class="aix-style-entry-widget">
 				<h2><?php echo $Text['primer_torn'];?></h2>
 				<table>
 					<tr>
@@ -98,13 +79,14 @@
 						</td>
 						<td><p><?php echo $Text['desc_revise']; ?></p></td>
 					</tr>
-					
+
 					<tr>
 						<td>
-							<button class="aix-layout-fixW150" id="btn_nav_cash"><?php echo $Text['nav_wiz_cashbox']; ?></button>
+							<button class="aix-layout-fixW150" id="btn_nav_incidents"><?php echo $Text['nav_incidents']; ?></button>
 						</td>
-						<td><p><?php echo $Text['desc_cashbox']; ?></p></td>
+						<td><p><?php echo $Text['desc_incidents']; ?></p></td>
 					</tr>
+
 				</table>
 			</div>		
 
