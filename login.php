@@ -31,16 +31,12 @@ if (!isset($_SESSION)) {
 	<title> <?php print $Text['global_title'] . " - " . $Text['ti_login_news'];?> </title>
 	
 	<link rel="stylesheet" type="text/css"   media="screen" href="css/aixada_main.css" />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
-	
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>	
    
 	<script type="text/javascript" src="js/jquery/jquery.js"></script>
 	<script type="text/javascript" src="js/jqueryui/jqueryui.js"></script>
 	<script type="text/javascript" src="js/aixadautilities/jquery.aixadaXML2HTML.js" ></script>
-	<script type="text/javascript" src="js/aixadautilities/jquery.aixadaUtilities.js" ></script>	
-   	
-	   	
-	
+	<script type="text/javascript" src="js/aixadautilities/jquery.aixadaUtilities.js" ></script>
 	   	
 	<script type="text/javascript">
 		$(function(){
@@ -82,9 +78,7 @@ if (!isset($_SESSION)) {
 					}
 				}); //end ajax retrieve date
  				return false;
-			});
-
-			
+			});			
 			
 			/**
 			 * forgot pwd dialog
@@ -114,8 +108,7 @@ if (!isset($_SESSION)) {
 							$( this ).dialog( "close" );
 						}
 				}
-			});
-			
+			});			
 	
 				
 			/**
@@ -125,10 +118,7 @@ if (!isset($_SESSION)) {
 					url: 'php/ctrl/Incidents.php',
 					params : 'oper=getIncidentsListing&filter=pastWeek&type=3',
 					loadOnInit: true,
-			});
-
-
-			
+			});			
 
 
 			/**
@@ -142,16 +132,13 @@ if (!isset($_SESSION)) {
 					$('#logonMsg')
 						.text('')
 						.removeClass('ui-state-error');
-				}); 
-
-		
+				});		
 
 		});
 	</script>    
 	
 </head>
 <body>
-
 
 <div id="wrap">
 
@@ -175,8 +162,7 @@ if (!isset($_SESSION)) {
 					<p class="msg">{details}</p>
 				</div>
 			</div>
-		</div>
-	
+		</div>	
 		
 		<div id="logonWrap" class="aix-layout-splitW20">
 			<div class="ui-widget-content ui-corner-all">
@@ -209,11 +195,7 @@ if (!isset($_SESSION)) {
 		</div>
 	</div><!-- end logonwrap -->
 	
-	
-	
 	</div><!-- end stagewrap -->
-	
-
 
 </div>
 <div id="dialog-message" title="">
@@ -226,7 +208,3 @@ if (!isset($_SESSION)) {
 
 </body>
 </html>
-
-
-
-
