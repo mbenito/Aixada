@@ -3,60 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Aixada - Report - Order</title>
-
+	<title>OlideCoop - Report - Order</title>
 
 	<style type="text/css">
-		body 				{font-size:0.8em; font-family:arial, helvetica;}
-		table 				{width:100%; margin-bottom:10px; border-collapse:collapse;}
-		td					{border:solid 1px black; padding:2px 2px;}
-		th					{border:solid 1px black; background:#efefef;}
-		p 					{margin:0px;}
-		th h2				{margin:4px;}
+		body 			{font-size:0.8em; font-family:arial, helvetica;}
+		table 			{width:100%; margin-bottom:10px; border-collapse:collapse;}
+		td			{border:solid 1px black; padding:2px 2px;}
+		th			{border:solid 1px black; background:#efefef;}
+		p 			{margin:0px;}
+		th h2			{margin:4px;}
 		
-		.section 			{width:90%; clear:both; margin-bottom:10px;}
+		.section 		{width:90%; clear:both; margin-bottom:10px;}
 		.txtAlignRight		{text-align:right;}
 		.txtAlignCenter		{text-align:center;}
-		.tdAlignTop			{vertical-align:top;}
-		.bold				{font-weight:bold;}
+		.tdAlignTop		{vertical-align:top;}
+		.bold			{font-weight:bold;}
 
-
-		.b4					{border:2px solid black;}	 
-		.p4-5				{padding:5px;}
-		.hidden				{display:none;}
+		.b4			{border:2px solid black;}	 
+		.p4-5			{padding:5px;}
+		.hidden			{display:none;}		
 		
+		div#logo		{width:500px; height:180px; float:left; border:1px solid black; margin-bottom:20px;}
+		div#address		{}
 
-		
-		
-		div#logo			{width:500px; height:180px; float:left; border:1px solid black; margin-bottom:20px;}
-		div#address			{}
-
-		.loadingMsg			{font-weight:bold; font-size:2em; text-align:center; display:block;}
-		
-
+		.loadingMsg		{font-weight:bold; font-size:2em; text-align:center; display:block;}
 		.clickPageBreak 	{display:block; margin-bottom:50px;}
 		.pageBreakBtn		{padding:5px; border:solid 1px black; background-color:#f9f9f9; cursor:pointer;}
-		.pageBreak 			{display:block;border-bottom:dashed 1px gray;}
+		.pageBreak 		{display:block;border-bottom:dashed 1px gray;}
 	
 		@media print {
 	  		.pageBreak  	{display:block; page-break-before:always; border-bottom:dashed 1px gray; margin-bottom:50px;}
 	  		.pageBreakBtn 	{display:none;}
-	  		.loadingMsg		{display:none;}
+	  		.loadingMsg	{display:none;}
 		}
 
 		
-	</style>
-	
+	</style>	
 	
 	<script type="text/javascript" src="../js/jquery/jquery.js"></script>
 	<script type="text/javascript" src="../js/jqueryui/jqueryui.js"></script>
    	<script type="text/javascript" src="../js/aixadautilities/jquery.aixadaXML2HTML.js" ></script>
-	<script type="text/javascript" src="../js/aixadautilities/jquery.aixadaUtilities.js" ></script>
- 
+	<script type="text/javascript" src="../js/aixadautilities/jquery.aixadaUtilities.js" ></script> 
 
-	<script type="text/javascript">
-
-		
+	<script type="text/javascript">		
 	
 		$(function(){
 
@@ -88,17 +77,16 @@
 	
 </head>
 <body>
-	
 	<div id="header" class="section">
 		<div id="logo">
-						<img alt="coop logo" src="../img/tpl_header_logo.png" width="500" height="180"/>
+			<img alt="coop logo" src="../img/tpl_header_logo.png" width="500" height="180"/>
 		</div>
 		<div id="address">
-			<h2 class="txtAlignRight">COOPERATIVA NAME</h2>
-			<h2 class="txtAlignRight">CIF/NIF: F6500000</h2>
-			<p class="txtAlignRight">Street<br/>
-			Zip City<br/>
-			email@bla.com
+			<h2 class="txtAlignRight"><?php echo $Text['coop_name']; ?></h2>
+			<h2 class="txtAlignRight">CIF/NIF: <?php echo $Text['coop_cif']; ?></h2>
+			<p class="txtAlignRight"><?php echo $Text['coop_street']; ?><br/>
+			<?php echo $Text['coop_city']; ?><br/>
+			<?php echo $Text['admin_mail']; ?>
 			</p>
 		</div>
 	</div>
@@ -117,7 +105,4 @@
 		</div>
 	</div>
 </body>
-
-
-
 </html>
