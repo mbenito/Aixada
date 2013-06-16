@@ -1,6 +1,5 @@
 <?php
 
-
 require_once 'php/lib/table_manager.php';
 require_once 'php/inc/database.php';
 require_once 'php/utilities/general.php';
@@ -149,6 +148,7 @@ function make_canned_queries()
     $fkm = new foreign_key_manager($table);
     $order_by_clause = (in_array($table, array('aixada_unit_measure', 
 					       'aixada_iva_type',
+					       'aixada_rev_tax_type',
 					       'aixada_account')) ? 
                         "' order by '" :
                         "' order by active desc, '");
