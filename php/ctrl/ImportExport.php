@@ -1,32 +1,24 @@
 <?php
 
 define('DS', DIRECTORY_SEPARATOR);
-define('__ROOT__', dirname(dirname(dirname(__FILE__))).DS); 
-
+define('__ROOT__', dirname(dirname(dirname(__FILE__))).DS);
 
 require_once(__ROOT__ . "php/external/jquery-fileupload/UploadHandler.php");
 require_once(__ROOT__ . "local_config/config.php");
-
 require_once(__ROOT__ . "php/lib/import_products.php");
 require_once(__ROOT__ . "php/lib/import_providers.php");
-
 require_once(__ROOT__ . "php/lib/export_providers.php");
 require_once(__ROOT__ . "php/lib/export_products.php");
 require_once(__ROOT__ . "php/lib/export_cart.php");
 require_once(__ROOT__ . "php/lib/export_dates4products.php");
 require_once(__ROOT__ . "php/lib/export_members.php");
-require_once(__ROOT__ . "php/utilities/general.php");
+require_once(__ROOT__ . "php/utilities/general.php"); 
 
- 
-
-require_once(__ROOT__ . 'php/lib/gdrive.php'); //Zend Gdata throws stupid PHP Strict Warning 
-
+require_once(__ROOT__ . 'php/lib/gdrive.php'); //Zend Gdata throws stupid PHP Strict Warning
 
 require_once(__ROOT__ . 'php/external/FirePHPCore/lib/FirePHPCore/FirePHP.class.php');
 ob_start();
 $firephp = FirePHP::getInstance(true);
-
-
 
 try{ 
    
@@ -60,10 +52,7 @@ try{
  			$dt = abstract_import_manager::parse_file($path, get_param('import2Table',''));
 			echo $dt->get_html_table();
 			$_SESSION['import_file'] = $path; 
- 			exit;
-
- 	
-    		
+ 			exit;    		
     		
  		case 'import':
  			
@@ -91,8 +80,7 @@ try{
  					$pi->import(get_param('append_new', false));
  					exit; 
  				
- 			}
-			
+ 			}			
 
 			echo 1; 
  			exit; 
