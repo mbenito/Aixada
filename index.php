@@ -9,11 +9,10 @@
   	<link rel="stylesheet" type="text/css"   media="print"  href="css/print.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/aixadacart/aixadacart.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/fgmenu/fg.menu.css"   />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
-     
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>     
     
     <?php if (isset($_SESSION['dev']) && $_SESSION['dev'] == true ) { ?> 
-	    <script type="text/javascript" src="js/jquery/jquery.js"></script>
+	    	<script type="text/javascript" src="js/jquery/jquery.js"></script>
 		<script type="text/javascript" src="js/jqueryui/jqueryui.js"></script>
 		<script type="text/javascript" src="js/fgmenu/fg.menu.js"></script>
 		<script type="text/javascript" src="js/aixadautilities/jquery.aixadaMenu.js"></script>     	 
@@ -25,8 +24,7 @@
     <?php }?>
      
    	<script type="text/javascript" src="js/jqueryui/i18n/jquery.ui.datepicker-<?=$language;?>.js" ></script> 
-    <script type="text/javascript" src="js/aixadacart/i18n/cart.locale-<?=$language;?>.js" ></script>
-	   
+    	<script type="text/javascript" src="js/aixadacart/i18n/cart.locale-<?=$language;?>.js" ></script>	   
 	<script type="text/javascript">
 	$(function(){
 
@@ -38,12 +36,10 @@
 			var gOrderLimit = 10; 
 
 			//index
-			var gOrderLimitIndex = 0; 
+			var gOrderLimitIndex = 0;
 
-
-			//sql result set limti for purchase
-			var gShopLimit = 10; 
-
+			//sql result set limit for purchase
+			var gShopLimit = 10;
 
 			var gShopLimitIndex = 0; 
 
@@ -59,7 +55,6 @@
 			});
 
 			$('#tmp').hide();
-
 
 
 			/********************************************************
@@ -171,8 +166,6 @@
 				} 
 			} //end loadOrderDetails
 
-
-
 			
 			//tmp table to load the order - shop comparison
 			$('#tbl_diffOrderShop tbody').xml2html('init',{
@@ -218,7 +211,7 @@
 
 
 			/**
-			 *	converst the order status INT into CSS and text
+			 *	convert the order status INT into CSS and text
 			 */
 			function formatOrderStatus(intStatus){
 				var modClass = '';
@@ -311,7 +304,6 @@
 				return index*gOrderLimit+","+(gOrderLimit);
 			}
 
-
 			
 			
 			/********************************************************
@@ -350,9 +342,7 @@
 					//params : 'oper=getShopListing&uf_id=-1&filter=steps&steps='+shopDateSteps+'&range='+srange
 				});
 
-			});
-			
-			
+			});			
 			
 			
 			//load purchase listing
@@ -499,7 +489,6 @@
 	});  //close document ready
 </script>
 
-
 </head>
 <body>
 <div id="wrap">
@@ -512,8 +501,9 @@
 		<div id="homeWrap">
 			<div class="aix-layout-fixW150 floatLeft">
 				<div class="homeIcon">
-					<a href="shop_and_order.php?what=Shop"><img src="img/cesta.png"/></a>
-					<p><a href="shop_and_order.php?what=Shop"><?php echo $Text['icon_purchase'];?></a></p>
+					<!-- a href="shop_and_order.php?what=Shop"><img src="img/cesta.png"/></a -->
+					<a href="#"><img src="img/cesta.png"/></a>
+					<p><a href="#"><?php echo $Text['icon_purchase'];?></a></p>
 				</div>
 				<div class="homeIcon">
 					<a href="shop_and_order.php?what=Order"><img src="img/pedido.png"/></a>
@@ -657,10 +647,7 @@
 			<th><?php echo $Text['provider_name'];?></th>					
 			<th class="textAlignCenter"><?=$Text['qu']?></th>
 			<th><?php echo $Text['unit'];?></th>
-			<th class="textAlignRight"><?=$Text['price'];?></th>
-			
-			
-			
+			<th class="textAlignRight"><?=$Text['price'];?></th>			
 		</tr>
 	</thead>
 	<tbody>
@@ -684,8 +671,6 @@
 
 				
 </div>
-
-
 
 <!-- end of wrap -->
 <div id="dialog-message" title="">
