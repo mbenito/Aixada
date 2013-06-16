@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css"   media="screen" href="css/aixada_main.css" />
   	<link rel="stylesheet" type="text/css"   media="print"  href="css/print.css" />
   	<link rel="stylesheet" type="text/css"   media="screen" href="js/fgmenu/fg.menu.css"   />
-    <link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
+    	<link rel="stylesheet" type="text/css"   media="screen" href="css/ui-themes/<?=$default_theme;?>/jqueryui.css"/>
 
     <?php if (isset($_SESSION['dev']) && $_SESSION['dev'] == true ) { ?> 
 	    <script type="text/javascript" src="js/jquery/jquery.js"></script>
@@ -558,7 +558,7 @@
 						
 							<td></td>
 							<td><label for="statusSelect"><?php echo $Text['status'];?></label></td>
-							<td><select id="statusSelect" name="statusSelect" class="mediumSelect"><option value="open"> <?php echo $Text['status_open'];?></option><option value="closed"> <?php echo $Text['status_closed'];?></option></select></td>
+							<td><select id="statusSelect" name="statusSelect" class="mediumSelect"><option value=<?php echo $Text['status_open'];?>> <?php echo $Text['status_open'];?></option><option value=<?php echo $Text['status_closed'];?>> <?php echo $Text['status_closed'];?></option></select></td>
 						</tr>
 						<tr>
 							
