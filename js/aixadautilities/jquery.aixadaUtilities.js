@@ -1,4 +1,3 @@
-
 $(function(){
 	
 	
@@ -256,7 +255,7 @@ $(function(){
 			var str = '';
 
 			if (settings.type == 'error'){
-					settings.title = (settings.title == '')? '$#!@!Error!!!':settings.title;
+					settings.title = (settings.title == '')? 'Error':settings.title;
 					str = '<div class="ui-state-error ui-corner-all" style="padding:0.7em;"><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>'+settings.msg+'</div>';
 					
 			} else if (settings.type == 'info'){
